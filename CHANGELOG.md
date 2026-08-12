@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0 (2026-08-12)
+
+
+### Features
+
+* add example sample_sheet from cellranger-multi workflow with 10x MTX encompassing folder path ([e4a5d94](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/e4a5d94dd86bda89670a2d0916da2c2e35a2cc7d))
+
 ## [1.3.0](https://github.com/snakemake-workflows/snakemake-workflow-template/compare/v1.2.0...v1.3.0) (2026-03-27)
 
 
