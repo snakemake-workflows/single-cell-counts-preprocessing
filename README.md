@@ -55,11 +55,12 @@ The [profiles `README.md`](profiles/README.md) provides more details.
 ## Authors
 
 - David Lähnemann
-  - German Cancer Consortium (DKTK), partner site Essen-Düsseldorf, A partnership between DKFZ and University Hospital Essen
+  - German Cancer Consortium (DKTK), partner site Essen-Düsseldorf, A partnership between DKFZ and University Hospital Essen, Germany
+  - Bioinformatics and Computational Oncology, Institute for AI in Medicine (IKIM), University Hospital Essen, University of Duisburg-Essen, Essen, Germany
   - https://orcid.org/0000-0002-9138-4112
 - Ekaterina Fomina
-  - Westphalian University of Applied Sciences Gelsenkirchen, Bocholt, Recklinghausen, Department of Engineering and Natural Sciences, Recklinghausen, Germany,
-  - Bioinformatics and Computational Oncology, Institute for AI in Medicine (IKIM), University Hospital Essen, University of Duisburg-Essen, Essen, Germany,
+  - Westphalian University of Applied Sciences Gelsenkirchen, Bocholt, Recklinghausen, Department of Engineering and Natural Sciences, Recklinghausen, Germany
+  - Bioinformatics and Computational Oncology, Institute for AI in Medicine (IKIM), University Hospital Essen, University of Duisburg-Essen, Essen, Germany
   - https://orcid.org/0009-0003-5436-7748
 
 ## References
