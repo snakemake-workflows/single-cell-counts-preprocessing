@@ -1,3 +1,5 @@
-sample_id	pool_id	per_sample_counts_path
-sample_1	pool_1	../results/cellranger/pool_1/outs/per_sample_outs/sample_1/
-sample_2	pool_1	../results/cellranger/pool_1/outs/per_sample_outs/sample_2/
+sample_id	pool_id	raw_counts_path	format
+sample_1	pool_1	../results/cellranger/pool_1/outs/per_sample_outs/sample_1/raw_feature_bc_matrix/	10x_mtx
+sample_2	pool_1	../results/cellranger/pool_1/outs/per_sample_outs/sample_2/raw_feature_bc_matrix/	10x_mtx
+sample_3	pool_X	../results/kallisto-bustools/sample_3/counts_unfiltered/adata.h5ad	h5ad
+sample_4	pool_Y	../results/alevin-fry/sample_4/quants_mat.mtx	mtx

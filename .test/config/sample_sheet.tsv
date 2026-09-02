@@ -1,0 +1,3 @@
+sample_id	pool_id	raw_counts_path	format
+sc5p_v2_hs_PBMC_1k_h5	pool_1	data/sc5p_v2_hs_PBMC_1k/sc5p_v2_hs_PBMC_1k_raw_feature_bc_matrix.h5	10x_h5
+sc5p_v2_hs_PBMC_1k_mtx	pool_1	data/sc5p_v2_hs_PBMC_1k/raw_feature_bc_matrix/	10x_mtx

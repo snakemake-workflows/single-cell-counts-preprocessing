@@ -1,38 +1,31 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
-type: object
 description: main configuration schema for the workflow
 properties:
   sample_sheet:
     type: string
     description: path to sample sheet, mandatory
-    default: config/samples.tsv
+    default: config/sample_sheet.tsv
 
-  get_genome:
+  filtering:
     type: object
     properties:
-      ncbi_ftp:
-        type: string
-        description: URL for genome retrieval from NCBI FTP server
-        default: ""
-    required:
-      - ncbi_ftp
-
-  simulate_reads:
-    type: object
-    properties:
-      read_length:
+      counts_mads:
         type: integer
-        description: length of target reads in bp
-        default: 100
-      read_number:
+        description: Median absolute deviation (MAD) of three counts quality control values, above which a cell is considered an outlier.
+        default: 5
+      mt_percent:
         type: integer
-        description: number of total reads to be simulated
-        default: 10000
+        description: Mitochondrial counts percentage from all counts, above which a cell is considered an outlier.
+        default: 20
+      mt_percent:
+        type: integer
+        description: Median absolute deviation (MAD) of mitochondrial counts percentage from all counts, above which a cell is considered an outlier.
+        default: 5
     required:
-      - read_length
-      - read_number
+      - counts_mads
+      - mt_percent
+      - mt_percent_mads
 
 required:
   - sample_sheet
-  - get_genome
-  - simulate_reads
+  - filtering

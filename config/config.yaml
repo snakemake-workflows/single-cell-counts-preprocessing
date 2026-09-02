@@ -1,8 +1,15 @@
-sample_sheet: ".test/config/samples.tsv"
+sample_sheet: "config/sample_sheet.tsv"
 
-get_genome:
-  ncbi_ftp: https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.fna.gz
-
-simulate_reads:
-  read_length: 100
-  read_number: 10000
+filtering:
+  # Median absolute deviation (MAD) of three counts quality control values,
+  # above which a cell is considered an outlier. For details, see:
+  # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  counts_mads: 5
+  # Mitochondrial counts percentage from all counts, above which a cell is
+  # considered an outlier. For details, see:
+  # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  mt_percent: 20
+  # Median absolute deviation (MAD) of mitochondrial counts percentage from all
+  # counts, above which a cell is considered an outlier. For details, see:
+  # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  mt_percent_mads: 5
