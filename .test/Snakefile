@@ -1,5 +1,6 @@
 configfile: "config/config.yaml"
 
+
 # declare main workflow as a module
 module test_single_cell_counts_preprocessing_workflow:
     snakefile:
@@ -22,7 +23,7 @@ rule download_10x_h5_test_data:
     output:
         "data/sc5p_v2_hs_PBMC_1k/sc5p_v2_hs_PBMC_1k_raw_feature_bc_matrix.h5",
     log:
-        "<logs>/data/download_10x_h5_test_data.log"
+        "<logs>/data/download_10x_h5_test_data.log",
     shell:
         "( cd data/sc5p_v2_hs_PBMC_1k/; "
         " wget https://cf.10xgenomics.com/samples/cell-vdj/4.0.0/sc5p_v2_hs_PBMC_1k/sc5p_v2_hs_PBMC_1k_raw_feature_bc_matrix.h5; "
@@ -33,10 +34,9 @@ rule download_10x_mtx_test_data:
     output:
         directory("data/sc5p_v2_hs_PBMC_1k/raw_feature_bc_matrix/"),
     log:
-        "<logs>/data/download_10x_mtx_test_data.log"
+        "<logs>/data/download_10x_mtx_test_data.log",
     shell:
         "( cd data/sc5p_v2_hs_PBMC_1k/; "
         "  wget https://cf.10xgenomics.com/samples/cell-vdj/4.0.0/sc5p_v2_hs_PBMC_1k/sc5p_v2_hs_PBMC_1k_raw_feature_bc_matrix.tar.gz; "
         "  tar xzfv sc5p_v2_hs_PBMC_1k_raw_feature_bc_matrix.tar.gz; "
         ") > {log} 2>&1 "
-    

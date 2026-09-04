@@ -1,6 +1,10 @@
 rule convert_raw_counts_to_zarr:
     input:
-        matrix=lookup(within=samples, query="sample_id == '{wildcards.sample}'", cols="raw_counts_path"),
+        matrix=lookup(
+            within=samples,
+            query="sample_id == '{wildcards.sample}'",
+            cols="raw_counts_path",
+        ),
     output:
         zarr=directory("<results>/raw_counts/{sample}/{sample}.raw_counts.zarr"),
         raw_total_counts_plot="<results>/raw_counts/{sample}/{sample}.raw_total_counts.html",
@@ -10,7 +14,9 @@ rule convert_raw_counts_to_zarr:
     conda:
         "../envs/scanpy.yaml"
     params:
-        input_format=lookup(within=samples, query="sample_id == '{wildcards.sample}'", cols="format"),
+        input_format=lookup(
+            within=samples, query="sample_id == '{wildcards.sample}'", cols="format"
+        ),
     script:
         "../scripts/convert_raw_counts_to_zarr.py"
 
