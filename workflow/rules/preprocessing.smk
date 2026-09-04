@@ -2,7 +2,7 @@ rule convert_raw_counts_to_zarr:
     input:
         matrix=lookup(within=samples, query="sample_id == '{wildcards.sample}'", cols="raw_counts_path"),
     output:
-        zarr="<results>/raw_counts/{sample}/{sample}.raw_counts.zarr",
+        zarr=directory("<results>/raw_counts/{sample}/{sample}.raw_counts.zarr"),
         raw_total_counts_plot="<results>/raw_counts/{sample}/{sample}.raw_total_counts.html",
         pct_counts_mt_plot="<results>/raw_counts/{sample}/{sample}.pct_counts_mt.html",
     log:

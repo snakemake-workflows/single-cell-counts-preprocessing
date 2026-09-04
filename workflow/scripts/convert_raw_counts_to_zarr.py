@@ -120,4 +120,4 @@ plot_value_per_barcode(
 )
 
 
-adata.write(snakemake.output["zarr"])
+adata.write_zarr(snakemake.output["zarr"])
