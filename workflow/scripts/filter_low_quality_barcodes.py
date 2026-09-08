@@ -173,8 +173,9 @@ adata.obs["counts_outlier"] = (
 print(
     f"Filtering based on {counts_mads} median absolute standard deviations\n"
     "of log1p_total_counts, log1p_n_genes_by_counts and\n"
-    f"pct_counts_in_top_20_genes will remove {adata.obs.counts_outlier.value_counts()[True]} barcodes\n"
-    f"and keep {adata.obs.counts_outlier.value_counts()[True]} barcodes.",
+    "pct_counts_in_top_20_genes will:\n"
+    f"remove: {adata.obs.counts_outlier.value_counts()[True]} barcodes\n"
+    f"keep:   {adata.obs.counts_outlier.value_counts()[False]} barcodes.\n",
     file=sys.stderr
 )
 
@@ -186,14 +187,15 @@ adata.obs["mt_outlier"] = is_outlier(adata, "pct_counts_mt", mt_percent_mads) | 
 print(
     f"Filtering based on {mt_percent_mads} median absolute standard deviations\n"
     f"of pct_counts_mt and a maximum of {mt_percent} % mitochondrial counts\n"
-    f"will remove {adata.obs.mt_outlier.value_counts()[True]} barcodes\n"
-    f"and keep {adata.obs.mt_outlier.value_counts()[False]} barcodes.",
+    "will:\n
+    f"remove: {adata.obs.mt_outlier.value_counts()[True]} barcodes\n"
+    f"keep:   {adata.obs.mt_outlier.value_counts()[False]} barcodes.\n",
     file=sys.stderr
 )
 
-print(f"Total number of barcodes before filtering of low quality barcodes: {adata.n_obs}", file=sys.stderr)
+print(f"Total number of barcodes before filtering of low quality barcodes: {adata.n_obs}\n", file=sys.stderr)
 adata = adata[(~adata.obs.counts_outlier) & (~adata.obs.mt_outlier)].copy()
 
-print(f"Total number of barcodes after filtering of low quality barcodes: {adata.n_obs}", file=sys.stderr)
+print(f"Total number of barcodes after filtering of low quality barcodes: {adata.n_obs}\n", file=sys.stderr)
 
 adata.write_zarr(snakemake.output["zarr"])
