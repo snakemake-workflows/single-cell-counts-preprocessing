@@ -187,7 +187,7 @@ print(
     f"Filtering based on {mt_percent_mads} median absolute standard deviations\n"
     f"of pct_counts_mt and a maximum of {mt_percent} % mitochondrial counts\n"
     f"will remove {adata.obs.mt_outlier.value_counts()[True]} barcodes\n"
-    f"and keep {adata.obs.mt_outlier.value_counts()[True]} barcodes.",
+    f"and keep {adata.obs.mt_outlier.value_counts()[False]} barcodes.",
     file=sys.stderr
 )
 
