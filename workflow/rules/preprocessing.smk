@@ -23,7 +23,9 @@ rule filter_low_quality_barcodes:
     input:
         zarr="<results>/raw_counts/{sample}/{sample}.raw_counts.zarr",
     output:
-        zarr=directory("<results>/filtered_counts/{sample}/{sample}.filtered_counts.zarr"),
+        zarr=directory(
+            "<results>/filtered_counts/{sample}/{sample}.filtered_counts.zarr"
+        ),
         raw_total_counts_plot="<results>/raw_counts/{sample}/{sample}.raw_total_counts.html",
         raw_total_counts_plot_png="<results>/raw_counts/{sample}/{sample}.raw_total_counts.png",
         pct_counts_mt_plot="<results>/raw_counts/{sample}/{sample}.pct_counts_mt.html",
@@ -39,7 +41,9 @@ rule filter_low_quality_barcodes:
     conda:
         "../envs/scanpy.yaml"
     params:
-        min_umis_per_barcode=lookup(within=config, dpath="filtering/min_umis_per_barcode"),
+        min_umis_per_barcode=lookup(
+            within=config, dpath="filtering/min_umis_per_barcode"
+        ),
         counts_mads=lookup(within=config, dpath="filtering/counts_mads"),
         mt_percent=lookup(within=config, dpath="filtering/mt_percent"),
         mt_percent_mads=lookup(within=config, dpath="filtering/mt_percent_mads"),
