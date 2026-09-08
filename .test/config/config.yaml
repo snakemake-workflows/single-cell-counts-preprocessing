@@ -1,6 +1,7 @@
 sample_sheet: "config/sample_sheet.tsv"
 
 filtering:
+  min_umis_per_barcode: 30
   counts_mads: 5
   mt_percent: 20
   mt_percent_mads: 5

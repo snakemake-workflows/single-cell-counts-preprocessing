@@ -4,3 +4,4 @@ channels:
 dependencies:
   - scanpy=1.12
   - altair=6.2
+  - vl-convert-python

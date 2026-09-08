@@ -1,15 +1,33 @@
 sample_sheet: "config/sample_sheet.tsv"
 
 filtering:
-  # Median absolute deviation (MAD) of three counts quality control values,
-  # above which a cell is considered an outlier. For details, see:
+  # Minimum number of UMIs to require per barcode. This is a filter applied
+  # previous to all other filters, to remove empty droplets (with only ambient
+  # RNA) from the data. This is necessary to have reduce the data to a number
+  # of barcodes that are reasonable to plot, before further quality filtering.
+  min_umis_per_barcode: 30
+  # Median absolute deviation (MAD) of three counts-based quality control
+  # values, outside of which a cell is considered an outlier. For details, see:
   # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  # To check, whether the provided value makes sense for your dataset, check the
+  # following (HTML or PNG) plots that mark the resulting thresholds in the
+  # respective counts' distribution:
+  # * <results>/raw_counts/{sample}/{sample}.log1p_n_genes_by_counts.png
+  # * <results>/raw_counts/{sample}/{sample}.log1p_total_counts.png
+  # * <results>/raw_counts/{sample}/{sample}.pct_counts_in_top_20_genes.png
   counts_mads: 5
   # Mitochondrial counts percentage from all counts, above which a cell is
   # considered an outlier. For details, see:
   # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  # To check, whether the provided value makes sense for your dataset, check the
+  # following (HTML or PNG) plot that marks the threshold in the distribution:
+  # * <results>/raw_counts/{sample}/{sample}.oct_counts_mt.png
   mt_percent: 20
   # Median absolute deviation (MAD) of mitochondrial counts percentage from all
   # counts, above which a cell is considered an outlier. For details, see:
   # https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html#filtering-low-quality-cells
+  # To check, whether the provided value makes sense for your dataset, check the
+  # following (HTML or PNG) plot that marks the resulting thresholds in the
+  # distribution:
+  # * <results>/raw_counts/{sample}/{sample}.oct_counts_mt.png
   mt_percent_mads: 5
