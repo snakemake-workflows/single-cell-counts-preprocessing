@@ -10,7 +10,7 @@ import altair as alt
 from scipy.stats import median_abs_deviation
 from math import ceil
 
-adata = ad.read_zarr(snakemake.input["zarr"])
+adata = ad.read_h5ad(snakemake.input["h5ad"])
 
 counts_mads = snakemake.params["counts_mads"]
 mt_percent = snakemake.params["mt_percent"]
@@ -198,4 +198,19 @@ adata = adata[(~adata.obs.counts_outlier) & (~adata.obs.mt_outlier)].copy()
 
 print(f"Total number of barcodes after filtering of low quality barcodes: {adata.n_obs}\n", file=sys.stderr)
 
-adata.write_zarr(snakemake.output["zarr"])
+# ad-hoc normalization and clustering to provide a barcode/cell grouping for
+# downstream ambient RNA correction with SoupX
+
+print("Adding ad-hoc clustering into `adata.obs[\"soupx_groups\"]`, for SoupX in the next step.\n", file=sys.stderr)
+adata_pp = adata.copy()
+sc.pp.normalize_total(adata_pp, target_sum=1e4)
+sc.pp.log1p(adata_pp)
+sc.pp.pca(adata_pp)
+sc.pp.neighbors(adata_pp)
+sc.tl.leiden(
+    adata_pp, key_added="soupx_groups", flavor="igraph", n_iterations=2, directed=False
+)
+adata.obs["soupx_groups"] = adata_pp.obs["soupx_groups"]
+del adata_pp
+
+adata.write_h5ad(snakemake.output["h5ad"], compression="gzip")

@@ -47,4 +47,4 @@ match input_format:
 
 adata.var_names_make_unique()
 
-adata.write_zarr(snakemake.output["zarr"])
+adata.write_h5ad(snakemake.output["h5ad"], compression="gzip")

@@ -1,4 +1,4 @@
-rule convert_raw_counts_to_zarr:
+rule convert_raw_counts_to_h5ad:
     input:
         matrix=lookup(
             within=samples,
@@ -6,9 +6,9 @@ rule convert_raw_counts_to_zarr:
             cols="raw_counts_path",
         ),
     output:
-        zarr=directory("<results>/raw_counts/{sample}/{sample}.raw_counts.zarr"),
+        h5ad="<results>/raw_counts/{sample}/{sample}.raw_counts.h5ad",
     log:
-        "<logs>/raw_counts/{sample}/{sample}.raw_counts.to_zarr.log",
+        "<logs>/raw_counts/{sample}/{sample}.convert_raw_counts_to_h5ad.log",
     conda:
         "../envs/scanpy.yaml"
     params:
@@ -16,16 +16,14 @@ rule convert_raw_counts_to_zarr:
             within=samples, query="sample_id == '{wildcards.sample}'", cols="format"
         ),
     script:
-        "../scripts/convert_raw_counts_to_zarr.py"
+        "../scripts/convert_raw_counts_to_h5ad.py"
 
 
 rule filter_low_quality_barcodes:
     input:
-        zarr="<results>/raw_counts/{sample}/{sample}.raw_counts.zarr",
+        h5ad="<results>/raw_counts/{sample}/{sample}.raw_counts.h5ad",
     output:
-        zarr=directory(
-            "<results>/filtered_counts/{sample}/{sample}.filtered_counts.zarr"
-        ),
+        h5ad="<results>/filtered_counts/{sample}/{sample}.filtered_counts.h5ad",
         raw_total_counts_plot="<results>/raw_counts/{sample}/{sample}.raw_total_counts.html",
         raw_total_counts_plot_png="<results>/raw_counts/{sample}/{sample}.raw_total_counts.png",
         pct_counts_mt_plot="<results>/raw_counts/{sample}/{sample}.pct_counts_mt.html",
@@ -37,7 +35,7 @@ rule filter_low_quality_barcodes:
         pct_counts_in_top_20_genes="<results>/raw_counts/{sample}/{sample}.pct_counts_in_top_20_genes.html",
         pct_counts_in_top_20_genes_png="<results>/raw_counts/{sample}/{sample}.pct_counts_in_top_20_genes.png",
     log:
-        "logs/filtered/{sample}.quality_control.log",
+        "<logs>/filtered_counts/{sample}.filtered_counts.log",
     conda:
         "../envs/scanpy.yaml"
     params:
