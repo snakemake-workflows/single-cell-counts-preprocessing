@@ -1,9 +1,0 @@
-channels:
-  - conda-forge
-  - bioconda
-  - nodefaults
-dependencies:
-  - scanpy=1.12
-  - altair=6.2
-  - rpy2=3.6
-  - r-soupx=1.6
