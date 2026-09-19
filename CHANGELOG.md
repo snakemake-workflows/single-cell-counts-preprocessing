@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0 (2026-09-19)
+
+
+### Features
+
+* add example sample_sheet from cellranger-multi workflow with 10x MTX encompassing folder path ([e4a5d94](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/e4a5d94dd86bda89670a2d0916da2c2e35a2cc7d))
+* ensure zarr output is compressed ([f3a09fe](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/f3a09fe570cfdd2190b0d4505f955d6d09fb9caf))
+* initial conversion to zarr format and initial raw counts qc plots ([ca49f45](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/ca49f4510b7b9ef36496486a37225055cef0fcae))
+* working version of low quality barcode filtering, including quality control plots with thresholds highlighted ([86f48db](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/86f48db882be1f29a460a6bd2681c36cda1cb489))
+* working version of soupx installation with H5AD reading and writing support, and working version of ambient RNA correction with soupX ([4a037c2](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/4a037c247676c120ff14f1e06a740e78ed38e9b2))
+
+
+### Bug Fixes
+
+* add extra dependencies to scanpy.yaml, to allow for ad-hoc clustering during filtering (to use during soupX ambient RNA correction) ([e212c6f](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/e212c6f24d2cb81c08a963e954ce48a65f849fdd))
+* copy-pasta error ([cff7b66](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/cff7b66c5f773ffd02935439bc3ec743283601b7))
+* improve quality control logging output formatiing ([cb98aa6](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/cb98aa612d97cbcfe3e14fd16371afb80a7ce2ca))
+* switch everything from Zarr to gzipped H5AD, as Zarr sharding is not yet supported in anndataR and we need an interoperable format for SoupX ambient RNA correction in R ([ca94784](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/ca94784898c60d98796c6ce5cf4872ce0737eb1f))
+* typo ([4390291](https://github.com/snakemake-workflows/single-cell-counts-preprocessing/commit/4390291293468d4f77c99f73dbd81b9f14d448ac))
+
 ## [1.3.0](https://github.com/snakemake-workflows/snakemake-workflow-template/compare/v1.2.0...v1.3.0) (2026-03-27)
 
 
