@@ -47,3 +47,18 @@ rule filter_low_quality_barcodes:
         mt_percent_mads=lookup(within=config, dpath="filtering/mt_percent_mads"),
     script:
         "../scripts/filter_low_quality_barcodes.py"
+
+
+rule correct_ambient_rna_soupx:
+    input: 
+        raw_h5ad="<results>/raw_counts/{sample}/{sample}.raw_counts.h5ad",
+        filtered_h5ad="<results>/filtered_counts/{sample}/{sample}.filtered_counts.h5ad",
+    output: 
+        contamination_estimation="<results>/ambient_corrected/{sample}/{sample}.contamination_estimation.pdf",
+        soup_corrected="<results>/ambient_corrected/{sample}/{sample}.soupx_ambient_corrected_counts.h5ad",
+    log:
+        "<logs>/ambient_corrected/{sample}.soupx_ambient_corrected_counts.log"
+    conda:
+        "../envs/soupx.yaml"
+    script:
+        "../scripts/correct_ambient_rna_soupx.R"

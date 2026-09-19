@@ -1,0 +1,12 @@
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - r-soupx=1.6
+  - bioconductor-anndatar=1.2.1
+  - bioconductor-rarr=2.0.1
+  - bioconductor-rhdf5=2.56.1
+  - r-seurat
+  - r-remotes
+  - r-hdf5r
