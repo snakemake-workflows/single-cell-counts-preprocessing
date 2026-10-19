@@ -20,7 +20,7 @@ def get_final_results(wildcards):
 
     final_results.extend(
         expand(
-            "<results>/raw_counts/{sample}/{sample}.raw_counts.zarr",
+            "<results>/doublets_annotated/{sample}/{sample}.doublets_annotated.h5ad",
             sample=samples.sample_id,
         )
     )
