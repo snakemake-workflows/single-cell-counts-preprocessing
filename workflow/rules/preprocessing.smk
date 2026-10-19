@@ -62,3 +62,17 @@ rule correct_ambient_rna_soupx:
         "../envs/soupx.yaml"
     script:
         "../scripts/correct_ambient_rna_soupx.R"
+
+
+rule annotate_doublets:
+    input:
+        soup_corrected="<results>/ambient_corrected/{sample}/{sample}.soupx_ambient_corrected_counts.h5ad",
+    output:
+        doublets_annotated="<results>/doublets_annotated/{sample}/{sample}.doublets_annotated.h5ad",
+    log:
+        "<logs>/doublets_annotated/{sample}.doublets_annotated.log",
+    conda:
+        "../envs/scdblfinder.yaml"
+    script:
+        "../scripts/annotate_doublets.R"
+        

@@ -1,0 +1,9 @@
+channels:
+  - conda-forge
+  - bioconda
+  - nodefaults
+dependencies:
+  - bioconductor-scdblfinder=1.26
+  - bioconductor-anndatar=1.2.2
+  - bioconductor-rhdf5=2.56.1
+  - r-hdf5r
