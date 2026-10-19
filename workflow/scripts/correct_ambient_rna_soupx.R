@@ -31,6 +31,8 @@ filtered_adata$layers <- list(
     "soupx_counts" = t(out)
 )
 
+filtered_adata$X <- filtered_adata$layers[["soupx_counts"]]
+
 write_h5ad(
     object = filtered_adata,
     path = file.path(snakemake@output["soup_corrected"]),
