@@ -75,4 +75,3 @@ rule annotate_doublets:
         "../envs/scdblfinder.yaml"
     script:
         "../scripts/annotate_doublets.R"
-        
